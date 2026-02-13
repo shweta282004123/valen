@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Someone Special ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+/* Zoom Background Image */
+body::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url('love.jpg.jpeg') no-repeat center center/cover;
+    animation: zoomEffect 20s infinite alternate ease-in-out;
+    z-index:-2;
+}
+
+/* Gradient Overlay */
+body::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(to right, rgba(142, 140, 141, 0.6), rgba(255,100,150,0.6));
+    z-index:-1;
+}
+
+@keyframes zoomEffect{
+    from{transform:scale(1);}
+    to{transform:scale(1.2);}
+}
+
+/* Glass Card */
+.card{
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.2);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    width:350px;
+    color:white;
+    box-shadow:0 0 30px rgba(255,255,255,0.5);
+    animation:fadeIn 1.5s ease;
+}
+
+.card h1{
+    font-size:28px;
+    margin-bottom:15px;
+    text-shadow:0 0 10px white;
+}
+
+.card p{
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff0844;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.4s;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 15px white;
+}
+
+#message{
+    margin-top:15px;
+    font-size:20px;
+    font-weight:bold;
+    animation:glow 1s infinite alternate;
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 5px white;}
+    to{text-shadow:0 0 20px white;}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    color:white;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh); opacity:1;}
+    100%{transform:translateY(-10vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="music" autoplay loop>
+    <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <h1>Happy Valentine's Day ❤️</h1>
+    <p>"I don’t know when it happened…
+but somewhere between our talks and smiles,
+you became my favorite person.
+Will you be mine?💕</p>
+    <button onclick="showLove()">Click for Magic ✨</button>
+    <div id="message"></div>
+</div>
+
+<script>
+const music=document.getElementById("music");
+document.body.addEventListener("click",()=>{
+    music.play();
+},{once:true});
+
+function showLove(){
+    document.getElementById("message").innerHTML="I Love You Forever My Dear Bestie 💖🌹";
+}
+
+/* Floating Hearts */
+setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=Math.random()*25+15+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+},400);
+</script>
+
+</body>
+</html>
